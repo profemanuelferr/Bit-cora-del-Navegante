@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="azules">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plan de Evaluación – Bitácora del Navegante</title>
+  <meta name="description" content="Plan de Evaluación: Bitácora del Navegante para la Actualización Académica en Entornos Virtuales." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a; --surface: #0b2239; --card: #102b46; --ink: #e6f6ff; --ink-2: #c6e6ff;
+      --accent: #22c55e; --accent-2: #a3e635; --outline: #2b425d; --chip: #1d3149;
+      --link: #7dd3fc; --link-visited: #c4b5fd;
+    }
+    :root.hc {
+      --bg: #000; --surface: #000; --card: #000; --ink: #fff; --ink-2: #fff;
+      --accent: #00ff90; --accent-2: #baff00; --outline: #333; --chip: #111;
+      --link: #80ffff; --link-visited: #ff80ff;
+      letter-spacing: .2px;
+    }
+    /* Paletas accesibles */
+    :root[data-theme="azules"] {
+      --bg: #0f172a; --surface: #0b2239; --card: #102b46; --ink: #e6f6ff; --ink-2: #c6e6ff; --accent: #22c55e; --accent-2: #a3e635; --outline: #2b425d; --chip: #1d3149; --link: #7dd3fc; --link-visited: #c4b5fd;
+    }
+    :root[data-theme="blancos"] {
+      --bg: #f7fafc; --surface: #ffffff; --card: #eef2f7; --ink: #0f172a; --ink-2: #1f2937; --accent: #0ea5e9; --accent-2: #22c55e; --outline: #cbd5e1; --chip: #e2e8f0; --link: #0ea5e9; --link-visited: #7c3aed;
+    }
+    :root[data-theme="verdes"] {
+      --bg: #0b1f18; --surface: #0e2e25; --card: #114238; --ink: #e7fff7; --ink-2: #caffee; --accent: #22c55e; --accent-2: #86efac; --outline: #1b5c4e; --chip: #10382f; --link: #7ae4c1; --link-visited: #b6f0d9;
+    }
+    :root[data-theme="moradas"] {
+      --bg: #180f2a; --surface: #24123a; --card: #2d1650; --ink: #f3e8ff; --ink-2: #e9d5ff; --accent: #a78bfa; --accent-2: #22c55e; --outline: #3a2467; --chip: #261a44; --link: #c4b5fd; --link-visited: #7dd3fc;
+    }
+
+    html, body { height: 100%; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Inter, system-ui, Arial, sans-serif;
+      background: var(--bg); color: var(--ink); scroll-behavior: smooth;
+    }
+    a { color: var(--link); } a:visited { color: var(--link-visited); }
+
+    /* Funcionalidad extra de A11y */
+    body.a11y-links a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; background: rgba(255,255,0,0.1); }
+    body.a11y-spacing * { letter-spacing: 0.12em !important; word-spacing: 0.16em !important; line-height: 1.5 !important; }
+    body.a11y-noanim * { transition: none !important; animation: none !important; }
+
+    /* Layout */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: clamp(16px,2vw,28px); }
+    header { border-bottom: 1px solid var(--outline); background: radial-gradient(1200px 300px at 80% -20%, #1f5b7a 0%, #0d2740 60%, transparent 80%); }
+    .hero { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: center; text-align: center; }
+    .brand-logo-top { width: 100%; max-width: 800px; height: auto; margin: 6px auto 16px auto; display: block; border-radius: 12px; border: 2px solid var(--outline); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .hero h1 { margin: .3rem 0 0; font-size: clamp(30px,5vw,52px); line-height: 1.1; font-weight: 800; }
+    .subtitle { margin: .2rem 0 0; color: var(--ink-2); font-size: 1.2rem; }
+    nav { margin: 16px 0 6px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .chip { padding: .5rem .8rem; border: 1px solid var(--outline); border-radius: 999px; background: var(--chip); }
+    .chip a { color: var(--ink); text-decoration: none; }
+
+    main { display: grid; gap: 22px; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.02) 100%); padding-bottom: 80px; }
+    section { background: linear-gradient(165deg, rgba(255,255,255,.03), rgba(255,255,255,0)); border: 1px solid var(--outline); border-radius: 16px; padding: clamp(16px,2vw,26px); position: relative; }
+    section h2 { margin: 0 0 12px; font-size: clamp(22px,3vw,32px); }
+    section h3 { margin: 24px 0 8px; font-size: clamp(18px,2vw,24px); color: var(--accent); }
+    ul, ol { margin: .2rem 0 0 1rem; padding-left: 1rem; } li { margin: .5rem 0; line-height: 1.6; }
+    p { line-height: 1.6; margin-bottom: 12px; }
+    blockquote { border-left: 4px solid var(--accent); margin: 16px 0; padding: 12px 20px; background: var(--surface); border-radius: 0 8px 8px 0; font-style: italic; }
+
+    /* Insignias / Badges */
+    .badges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+    .badge-card { background: var(--surface); border: 1px solid var(--outline); border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; transition: transform 0.2s; }
+    .badge-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .badge-img { width: 120px; height: 120px; object-fit: contain; }
+    .badge-title { font-weight: 600; color: var(--ink); }
+
+    /* Tablas adaptables al tema */
+    .table-container { overflow-x: auto; margin-top: 16px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 12px; border: 1px solid var(--outline); vertical-align: top; }
+    th { background: var(--surface); font-weight: bold; }
+    tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+    /* Botón "Leer esta sección" */
+    .tts-section-btn {
+      position: absolute; top: 12px; right: 12px; font-size: .9rem;
+      padding: .4rem .6rem; border-radius: .5rem; border: 1px solid var(--outline);
+      background: var(--surface); color: var(--ink); cursor: pointer; z-index: 10;
+    }
+    .tts-section-btn:hover { background: var(--card); }
+    .reading { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+    /* Accesibilidad en pie/sección */
+    .controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; background: var(--card); padding: 12px; border-radius: 10px; border: 1px solid var(--outline); }
+    .select, .btn { padding: .6rem .8rem; border-radius: .6rem; border: 1px solid var(--outline); background: var(--surface); color: var(--ink); cursor: pointer; }
+    .btn { text-decoration: none; display: inline-block; font-weight: 600; }
+    .download .btn { background: var(--accent); border-color: var(--accent-2); color: #001b0a; font-weight: 700; }
+    .download .btn:hover { filter: brightness(1.05); }
+
+    footer { border-top: 1px solid var(--outline); margin-top: 8px; background: var(--surface); }
+    .footer-brand { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 0; }
+    .credits { color: var(--ink-2); text-align: center; padding-bottom: 20px; }
+
+    /* ====== Panel combinado Accesibilidad + Lector (izquierda) ====== */
+    #a11y-btn {
+      position: fixed; left: 16px; bottom: 16px; z-index: 99999;
+      background: #111827; color: #fff; border: 2px solid #22c55e; border-radius: 999px;
+      padding: .6rem .9rem; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    #a11y-panel {
+      position: fixed; left: 16px; bottom: 64px; z-index: 99998; width: 380px; max-width: calc(100% - 32px);
+      background: #0b2239; color: #e6f6ff; border: 1px solid #2b425d; border-radius: 12px; padding: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.6); display: none; max-height: 80vh; overflow-y: auto;
+    }
+    #a11y-panel.open { display: block; }
+    #a11y-panel h3 { margin: 0 0 6px; font-size: 1.1rem; color: #fff; }
+    #a11y-panel p.desc { margin: 0 0 12px; color: #c6e6ff; font-size: 0.9rem; line-height: 1.4; }
+    #a11y-panel .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; align-items: center; }
+    #a11y-panel label { min-width: 110px; font-size: 0.9rem; }
+    #a11y-panel select, #a11y-panel input[type=range] { flex: 1; padding: 6px; border-radius: 6px; background: #102b46; color: #e6f6ff; border: 1px solid #2b425d; }
+    #a11y-panel button {
+      flex: 1 1 auto; padding: .6rem .7rem; border-radius: .6rem; border: 1px solid #2b425d;
+      background: #102b46; color: #e6f6ff; cursor: pointer; font-size: 0.9rem; font-weight: 500;
+    }
+    #a11y-panel button:hover { background: #1d3149; }
+    #a11y-panel button[aria-pressed="true"] { border-color: #22c55e; background: rgba(34,197,94,0.1); box-shadow: 0 0 0 2px rgba(34,197,94,.4); }
+    #a11y-panel hr { border: none; border-top: 1px solid #2b425d; margin: 16px 0; }
+
+    @media (max-width: 600px) {
+        section h2 { padding-right: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap hero">
+      <img class="brand-logo-top" src="logo.png" alt="Banner Transformación en Altamar" onerror="this.src='https://placehold.co/800x200?text=Falta+logo.png'">
+
+      <h1>PLAN DE EVALUACIÓN</h1>
+      <p class="subtitle"><strong>Bitácora del Navegante</strong></p>
+
+      <nav aria-label="Secciones">
+        <span class="chip"><a href="#equipaje">Equipaje</a></span>
+        <span class="chip"><a href="#bitacora">La Bitácora</a></span>
+        <span class="chip"><a href="#objetivos">Objetivos</a></span>
+        <span class="chip"><a href="#criterios">Criterios a Evaluar</a></span>
+        <span class="chip"><a href="#resultados">Resultados</a></span>
+        <span class="chip"><a href="#retroalimentacion">Retroalimentación</a></span>
+        <span class="chip"><a href="#rubrica">Rúbrica</a></span>
+        <span class="chip"><a href="#protocolo">Protocolo S.E.R.</a></span>
+        <span class="chip"><a href="#trofeos">Trofeos</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    
+    <section id="equipaje">
+      <button class="tts-section-btn" data-tts="#equipaje">🔊 Leer sección</button>
+      <h2>Equipaje</h2>
+      <p>Antes de centrarnos en la Bitácora del Navegante, es preciso que hablemos de la evaluación diagnóstica. Con el objetivo de indagar en los saberes previos sobre las experiencias en entornos virtuales, en la sección Puente de Mando, y en la pestaña Equipaje, deberán completar un foro. Esta participación es obligatoria. Las preguntas que orientan la participación son:</p>
+      <ul>
+        <li>¿Tienes experiencias previas de estudios a distancia, como estudiante o como profesor?</li>
+        <li>¿Haz diseñado entornos virtuales? ¿En qué plataforma moodle, classroom etc?</li>
+      </ul>
+      <p>Tu voz es fundamental para construir juntos esta aventura educativa.</p>
+      <p>Todas sus experiencias y sus aprendizajes previos constituyen el equipaje con el cual van a zarpar en esta aventura pedagógica en altamar.</p>
+    </section>
+
+    <section id="bitacora">
+      <button class="tts-section-btn" data-tts="#bitacora">🔊 Leer sección</button>
+      <h2>La Bitácora</h2>
+      <p>La Bitácora de un navegante es el registro detallado de todos los eventos, observaciones y reflexiones que ocurren durante un viaje marítimo.</p>
+      <p>Estimados navegantes, una vez que hayan finalizado la autoevaluación en este punto de la travesía, los invitamos a registrar en sus Bitácoras Digitales las decisiones que permitan la mejora de sus aulas virtuales.</p>
+      <p>Cada uno conformará su Diario a Bordo. Mediante esta estrategia, pretendemos que puedan recopilar las evidencias que irán produciendo a lo largo de las travesías para registrar y visualizar las competencias adquiridas durante su propio proceso de aprendizaje a lo largo de este Postítulo.</p>
+      <p>La elaboración de la Bitácora del Navegante es personal, dependerá de la creatividad y competencias digitales de cada uno. Se valora la inclusión de formatos multimodales de evidencia más allá del texto: videos, audio/podcast, infografías, mapas mentales, presentaciones interactivas etc. Todos estos elementos contribuyen decisivamente a la inclusión, facilitando el acceso y la asimilación del contenido a cada estudiante.</p>
+      <p>Es importante aclarar que, la Bitácora del Navegante, se irá produciendo durante el recorrido de la Actualización Académica, por lo tanto, la evaluación está enmarcada en la evaluación formativa. “El objetivo fundamental de este tipo de evaluación es determinar el grado de adquisición de los aprendizajes para ayudar orientar y prevenir tanto al profesor como a los alumnos, aprendizajes no aprehendidos o aprehendidos erróneamente” (Fernadez Marcha,2010, p. 20)</p>
+    </section>
+
+    <section id="objetivos">
+      <button class="tts-section-btn" data-tts="#objetivos">🔊 Leer sección</button>
+      <h2>Objetivos de evaluación para esta travesía</h2>
+      <p>Por tal motivo, exponemos el objetivo de evaluación para esta travesía:</p>
+      
+      <h3>Tratados de Altamar: Normativas para la EaD</h3>
+      <p>✅ Diseñar en el Diario a Bordoun mapa conceptual o infografía original que sintetice la estructura jerárquica del marco normativo (leyes, resoluciones, acuerdos) que rige la Educación Híbrida en Formación Docente, y añadir una entrada reflexiva que identifique y analice críticamente la principal implicación pedagógica de una de estas normas para su futura práctica docente. En el Diario a Bordo podrán compartir la imagen o el link para acceder al mapa conceptual.</p>
+
+      <h3>Zona de Travesías: Creación de contenidos digitales y DUA</h3>
+      <p>✅ Desarrollar un mínimo de tres tipos diferentes de contenidos digitales (ej., un texto académico enriquecido, un diseño de actividad interactiva, y una infografía/video explicativo) que sean pedagógicamente pertinentes para un objetivo de aprendizaje específico y que demuestren un nivel técnico adecuado en su elaboración. En el Diario a Bordo compartirán estas producciones</p>
+    </section>
+
+    <section id="criterios">
+      <button class="tts-section-btn" data-tts="#criterios">🔊 Leer sección</button>
+      <h2>Criterios a evaluar</h2>
+      <p>Estimados navegantes, los animamos a que de manera ordenada, sistemática y cada uno a su ritmo trabaje en la construcción de su Bitácora de Naveante. Tengan en cuenta que se evaluará:</p>
+      <ul>
+        <li>✅ Aplicación del marco normativo vigente (Misiones/Nacional) para estructurar legalmente un diseño híbrido, y de gestionar los contenidos y la interacción digital utilizando licencias abiertas y normas de Netiqueta.</li>
+        <li>✅ Evaluación crítica de recursos digitales, seleccionando y justificando la herramienta más pertinente (por usabilidad, accesibilidad y sostenibilidad) para una fase específica del proceso de enseñanza-aprendizaje (planificación, mediación o evaluación)</li>
+        <li>✅ Producción y diseño de contenidos digitales originales (no solo digitalizados) y aplicación de criterios didácticos, comunicacionales y de accesibilidad/inclusión en su maquetado para entornos híbridos.</li>
+        <li>✅ Diseño y maquetado de la estructura de un aula virtual coherente, integrando objetivos, contenidos, estrategias de evaluación e interacción que respondan a una modalidad específica de formación en línea (ej. Taller o PBL).</li>
+      </ul>
+    </section>
+
+    <section id="resultados">
+      <button class="tts-section-btn" data-tts="#resultados">🔊 Leer sección</button>
+      <h2>Resultados de aprendizaje esperados</h2>
+      <p>Presentamos los resultados de aprendizaje esperados para cada travesía</p>
+      
+      <h3>Tratados de Altamar: Normativas de la EaD</h3>
+      <ul>
+        <li>✅ Reconoce la normativa vigente de la EaD en relación a propiedad intelectual, derechos de autor, acuerdos de convivencia digital.</li>
+        <li>✅ Describe la estructura y el alcance de la normativa vigente y destaca los artículos relevantes para la EaD.</li>
+        <li>✅ Aplica los puntos artículos seleccionados como relevantes y diseña los acuerdos de convivencia digital para tu propia aula virtual.</li>
+      </ul>
+
+      <h3>Zona de travesías: Creación de contenidos digitales y DUA</h3>
+      <ul>
+        <li>✅ Gestiona un repositorio digital de fuentes de información usando herramientas diversas para la colaboración y la edición simultánea de documentos.</li>
+        <li>✅ Selecciona y justifica la aplicación de estrategias interactivas digitales basado en el diagnóstico de las necesidades de un grupo de estudiantes y los principios de accesibilidad.</li>
+        <li>✅ Produce documentos académicos empleando múltiples formatos digitales (texto, audio, videos, infografía, etc.), garantizando la accesibilidad del contenido, respetando las normas de propiedad intelectual y las licencias de uso.</li>
+      </ul>
+    </section>
+
+    <section id="retroalimentacion">
+      <button class="tts-section-btn" data-tts="#retroalimentacion">🔊 Leer sección</button>
+      <h2>Retroalimentación del Diario a Bordo</h2>
+      <p>Finalmente, informamos el modo y los tiempos en que se realizará la retroalimentación del Diario a Bordo.</p>
+      <p>Anijovich y Cappelletti (2020) nos ofrecen diferentes modos de retroalimentación: formular preguntas, describir el trabajo del estudiante, valorar y celebrar los avances y logros del estudiante, brindar sugerencias, ofrecer andamiajes, favorecer la retroalimentación entre pares. En el EVA, se definió una pestaña exclusiva, GPS Náutico, que orientará los procesos de autoevaluación y autorreflexión útiles y necesarios para la elaboración del Diario a Bordo del Postítulo (Bitácora del Navegantel). Ahora bien, para el presente Plan de Evaluación se proponen dos estrategias: </p>
+    </section>
+
+    <section id="rubrica">
+      <button class="tts-section-btn" data-tts="#rubrica">🔊 Leer sección</button>
+      <h2>1- Rúbrica Analítica para Evaluar el Proceso</h2>
+      <p>Esta rúbrica se aplicará durante el recorrido de cada travesía.</p>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Criterios de Evaluación</th>
+              <th>Avanzado</th>
+              <th>Satisfactorio</th>
+              <th>En Desarrollo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Organización y Estructura</strong></td>
+              <td>El Diario a Bordo está organizado de forma lógica, intuitiva y profesional. Incluye un Índice/Menú claro y todos los componentes requeridos (introducción, secciones temáticas y conclusión). La navegación es fluida y sin fallos.</td>
+              <td>El Diario a Bordo incluye todos los componentes, pero la organización es básica o poco intuitiva. La navegación es funcional, pero puede requerir clics innecesarios o las secciones no están claramente etiquetadas.</td>
+              <td>La estructura es confusa o incompleta. Faltan componentes esenciales (índice, introducción) o la navegación es difícil, con enlaces rotos o secciones vacías.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Calidad de las Evidencias (actividades realizadas)</strong></td>
+              <td>Las evidencias seleccionadas (productos, actividades) son variadas, completas y demuestran un alto nivel de logro. Cada evidencia está claramente etiquetada y vinculada al objetivo de aprendizaje correspondiente.</td>
+              <td>Las evidencias son suficientes en cantidad, pero limitadas en variedad o calidad técnica. Demuestran un logro aceptable, pero la conexión con el objetivo de aprendizaje es implícita o débil.</td>
+              <td>Las evidencias son escasas o irrelevantes para los objetivos del curso. Las actividades presentadas están incompletas o son de baja calidad, sin cumplir con los requisitos técnicos mínimos.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Profundidad de la Metareflexión</strong></td>
+              <td>La sección de Metareflexión es crítica, profunda y autocrítica. El estudiante evalúa su propio proceso de aprendizaje, identifica claramente sus fallas y éxitos, y justifica las decisiones de inclusión de evidencias y propone mejoras concretas para su práctica futura.</td>
+              <td>La reflexión es descriptiva y honesta, resumiendo lo aprendido y los retos. Sin embargo, carece de análisis crítico (¿por qué falló? ¿cómo se relaciona con la teoría?) y no propone mejoras claras.</td>
+              <td>La reflexión es superficial o ausente. Solo parafrasea la actividad o se limita a expresar opiniones sin vincular el proceso con la teoría pedagógica o sin proponer acciones de mejora.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Rigor Ético y Técnico</strong></td>
+              <td>Todos los contenidos multimedia, textos y herramientas están correctamente referenciados y cumplen con las normativas de derechos de autor y licencias (Creative Commons, etc.). La presentación visual es estética y profesional.</td>
+              <td>Hay omisiones menores o inconsistencias en las referencias y citaciones. La estética es aceptable, pero podría mejorar en el uso de tipografía o colores para una mejor legibilidad.</td>
+              <td>El Diario a Bordo presenta violaciones éticas graves (plagio no citado, uso indebido de material con derechos de autor) o la presentación es desordenada y afecta negativamente la legibilidad y la experiencia del usuario.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="protocolo">
+      <button class="tts-section-btn" data-tts="#protocolo">🔊 Leer sección</button>
+      <h2>2- Protocolo S. E. R.</h2>
+      <p>Una vez aplicada la rúbrica, este protocolo pretende recuperar las fortalezas de una experiencia, agregar nuevas y suspender aquellas debilidades que no favorecen el aprendizaje. Se ofrecerá a los estudiantes una retroalimentación con síntesis de los hallazgos del proceso con el siguiente formato:</p>
+      <ul>
+        <li><strong>Seguir haciendo:</strong></li>
+        <li><strong>Empezar a hacer:</strong></li>
+        <li><strong>Reformular:</strong></li>
+      </ul>
+      <p>La articulación de ambas propuestas permitirá un acompañamiento situado y personalizado. A través de un monitoreo continuo, con periodicidad de dos semanas (calendarizadas), aplicando el Protocolo SER para facilitar el andamiaje docente y además motivar la metarreflexión del estudiante.</p>
+    </section>
+
+    <section id="trofeos">
+      <button class="tts-section-btn" data-tts="#trofeos">🔊 Leer sección</button>
+      <h2>El Cofre de los Trofeos</h2>
+      <p>¡Es el cofre de los logros!</p>
+      <p>En el recorrido formativo propuesto en este EVA, a medida que van completando las actividades individuales y/o colaborativas, encontrarán desafíos que les permitirán obtener distintas insignias que los van a distinguir entre los demás navegantes:</p>
+      
+      <div class="badges-grid">
+        <div class="badge-card">
+          <img src="Navegante.png" alt="Insignia de navegante" class="badge-img" onerror="this.src='https://placehold.co/120x120?text=Falta+Navegante.png'">
+          <span class="badge-title">- Insignia de navegante</span>
+        </div>
+        <div class="badge-card">
+          <img src="Cartografía.png" alt="Insignia de cartografía" class="badge-img" onerror="this.src='https://placehold.co/120x120?text=Falta+Cartografía.png'">
+          <span class="badge-title">- Insignia de cartografía.</span>
+        </div>
+        <div class="badge-card">
+          <img src="Vigia.png" alt="Insignia de Vigía" class="badge-img" onerror="this.src='https://placehold.co/120x120?text=Falta+Vigia.png'">
+          <span class="badge-title">- Insignia de Vigía</span>
+        </div>
+        <div class="badge-card">
+          <img src="Ingeniero.png" alt="Insignia de Ingeniero en altamar" class="badge-img" onerror="this.src='https://placehold.co/120x120?text=Falta+Ingeniero.png'">
+          <span class="badge-title">- Insignia de Ingeniero en altamar</span>
+        </div>
+      </div>
+
+      <p>Estos pequeños tesoros que van poblando su cofre ponderarán la calificación final obtenida con la evaluación sumativa.</p>
+      <p>Asimismo, como parte de sus trofeos, encontrarán aquí la retroalimentación y calificación final obtenida una vez finalizado todo el trayecto</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="credits">Diseño tipo infografía accesible © 2026. Bitácora del Navegante. - Lic. Natalia Kuperman</p>
+    </div>
+  </footer>
+
+  <!-- ====== Panel combinado Accesibilidad web + Lector en voz (izquierda) ====== -->
+  <button id="a11y-btn" aria-haspopup="dialog" aria-controls="a11y-panel" title="Accesibilidad (Ctrl+Alt+A)">♿ Accesibilidad</button>
+  <div id="a11y-panel" role="dialog" aria-labelledby="a11y-title">
+    <h3 id="a11y-title">Accesibilidad web · Lector en voz</h3>
+    <p class="desc">Podés elegir una paleta de colores legibles y ajustar el contraste para mejorar tu experiencia de lectura.</p>
+
+    <div class="row" aria-label="Paleta y contraste">
+      <label for="a11y-theme">Paleta de color:</label>
+      <select id="a11y-theme">
+        <option value="azules" selected>Azules</option>
+        <option value="blancos">Blancos</option>
+        <option value="verdes">Verdes</option>
+        <option value="moradas">Moradas</option>
+      </select>
+      <label for="a11y-contrast">Contraste:</label>
+      <select id="a11y-contrast">
+        <option value="alto" selected>Alto</option>
+        <option value="bajo">Bajo</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <button id="a11y-links" aria-pressed="false">Resaltar enlaces</button>
+      <button id="a11y-spacing" aria-pressed="false">Espaciado de texto</button>
+      <button id="a11y-noanim" aria-pressed="false">Detener animaciones</button>
+    </div>
+
+    <hr aria-hidden="true"/>
+
+    <h3>Lector en voz</h3>
+    <div class="row">
+      <label for="a11y-voice">Voz:</label>
+      <select id="a11y-voice"></select>
+    </div>
+    <div class="row">
+      <label for="a11y-rate">Velocidad:</label>
+      <input id="a11y-rate" type="range" min="0.7" max="1.6" step="0.1" value="1" aria-label="Velocidad de lectura">
+      <small id="a11y-rateVal">1x</small>
+    </div>
+    <div class="row">
+      <button id="a11y-read">Leer toda la página</button>
+      <button id="a11y-pause">Pausa</button>
+      <button id="a11y-stop">Detener</button>
+    </div>
+  </div>
+
+  <!-- ====== Lógica del panel combinado (Accesibilidad + TTS) ====== -->
+  <script>
+    (function(){
+      // --- Estado/tema global ---
+      const root = document.documentElement;
+      const colorSel = document.getElementById('colorSelect');
+      const contrastSel = document.getElementById('contrastSelect');
+      const savedTheme = localStorage.getItem('theme') || root.getAttribute('data-theme') || 'azules';
+      root.setAttribute('data-theme', savedTheme);
+      if (colorSel) colorSel.value = savedTheme;
+      const savedContrast = localStorage.getItem('contrast') || 'alto';
+      if (savedContrast === 'alto') root.classList.add('hc'); else root.classList.remove('hc');
+      if (contrastSel) contrastSel.value = savedContrast;
+
+      // --- Botón y panel ---
+      const btn = document.getElementById('a11y-btn');
+      const panel = document.getElementById('a11y-panel');
+      btn.addEventListener('click', () => panel.classList.toggle('open'));
+      document.addEventListener('keydown', (e)=>{ if(e.ctrlKey && e.altKey && e.key.toLowerCase()==='a'){ panel.classList.toggle('open'); } });
+
+      // --- Controles de paleta/contraste dentro del panel ---
+      const themeSel = document.getElementById('a11y-theme');
+      const contrast2 = document.getElementById('a11y-contrast');
+      themeSel.value = savedTheme; contrast2.value = savedContrast;
+
+      function setTheme(v){ root.setAttribute('data-theme', v); localStorage.setItem('theme', v); if (colorSel) colorSel.value=v; }
+      function setContrast(v){ if(v==='alto') root.classList.add('hc'); else root.classList.remove('hc'); localStorage.setItem('contrast', v); if (contrastSel) contrastSel.value=v; }
+
+      themeSel.addEventListener('change', e => setTheme(e.target.value));
+      contrast2.addEventListener('change', e => setContrast(e.target.value));
+
+      // Mantener bidireccional con los selects del contenido
+      colorSel?.addEventListener('change', e => { themeSel.value = e.target.value; setTheme(e.target.value); });
+      contrastSel?.addEventListener('change', e => { contrast2.value = e.target.value; setContrast(e.target.value); });
+
+      // Otras opciones de accesibilidad
+      const linksBtn = document.getElementById('a11y-links');
+      const spacingBtn = document.getElementById('a11y-spacing');
+      const noanimBtn = document.getElementById('a11y-noanim');
+
+      function togglePressed(el, className){
+        const pressed = el.getAttribute('aria-pressed') === 'true';
+        el.setAttribute('aria-pressed', String(!pressed));
+        document.body.classList.toggle(className, !pressed);
+      }
+      linksBtn.addEventListener('click', () => togglePressed(linksBtn, 'a11y-links'));
+      spacingBtn.addEventListener('click', () => togglePressed(spacingBtn, 'a11y-spacing'));
+      noanimBtn.addEventListener('click', () => togglePressed(noanimBtn, 'a11y-noanim'));
+
+      // --- TTS integrado en el panel ---
+      const synth = window.speechSynthesis;
+      const voiceSel = document.getElementById('a11y-voice');
+      const rate = document.getElementById('a11y-rate');
+      const rateVal = document.getElementById('a11y-rateVal');
+      const readBtn = document.getElementById('a11y-read');
+      const pauseBtn = document.getElementById('a11y-pause');
+      const stopBtn = document.getElementById('a11y-stop');
+      let queue = [];
+
+      function populateVoices(){
+        const voices = synth.getVoices().filter(v => v.lang.toLowerCase().startsWith('es'));
+        voiceSel.innerHTML = '';
+        (voices.length ? voices : synth.getVoices()).forEach(v=>{
+          const opt = document.createElement('option');
+          opt.value = v.name; opt.textContent = v.name + ' (' + v.lang + ')';
+          voiceSel.appendChild(opt);
+        });
+      }
+      populateVoices();
+      if(typeof synth!=='undefined') synth.onvoiceschanged = populateVoices;
+
+      rate.addEventListener('input', ()=> rateVal.textContent = rate.value + 'x');
+
+      function speakNodes(nodes){
+        stopReading();
+        queue = [];
+        nodes.forEach(node => {
+          const text = node.innerText || node.textContent;
+          if(!text || !text.trim()) return;
+          const parts = text.match(/[^.!?]+[.!?\s]*/g) || [text];
+          parts.forEach(p => {
+            const u = new SpeechSynthesisUtterance(p.trim());
+            const vName = voiceSel.value;
+            const voice = synth.getVoices().find(v => v.name === vName) || synth.getVoices().find(v => v.lang.startsWith('es')) || null;
+            if(voice) u.voice = voice;
+            u.rate = parseFloat(rate.value || '1');
+            queue.push(u);
+          });
+        });
+        queue.forEach(u => synth.speak(u));
+      }
+      function stopReading(){ synth.cancel(); queue=[]; pauseBtn.textContent='Pausa'; }
+
+      readBtn.addEventListener('click', ()=>{
+        const nodes = Array.from(document.querySelectorAll('main section h2, main section h3, main section p, main section li, main section th, main section td'));
+        speakNodes(nodes);
+      });
+      pauseBtn.addEventListener('click', ()=>{
+        if(synth.speaking && !synth.paused){ synth.pause(); pauseBtn.textContent='Continuar'; }
+        else if(synth.paused){ synth.resume(); pauseBtn.textContent='Pausa'; }
+      });
+      stopBtn.addEventListener('click', stopReading);
+
+      document.querySelectorAll('.tts-section-btn').forEach(b=>{
+        b.addEventListener('click', ()=>{
+          const sel=b.getAttribute('data-tts'); const sec=document.querySelector(sel);
+          if(!sec) return;
+          const nodes = Array.from(sec.querySelectorAll('h2,h3,p,li,th,td'));
+          speakNodes(nodes); sec.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+      });
+
+      if(!('speechSynthesis' in window)){
+        readBtn.disabled = pauseBtn.disabled = stopBtn.disabled = true;
+        const warn = document.createElement('small');
+        warn.textContent = 'Lectura por voz no disponible en este navegador.';
+        panel.appendChild(warn);
+      }
+    })();
+  </script>
+</body>
+</html>
